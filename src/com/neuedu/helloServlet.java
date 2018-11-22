@@ -26,7 +26,7 @@ public class helloServlet extends HttpServlet {
         boolean exists = userDao.isExists(username,password);
         if (exists == true)
         {
-            req.getRequestDispatcher("shouye.jsp").forward(req,resp);
+            req.getRequestDispatcher("/ShopServlet").forward(req,resp);
             return;
         }else
         {

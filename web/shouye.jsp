@@ -1,3 +1,7 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.neuedu.pojos.Shops" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: mr-d9
@@ -25,7 +29,11 @@
         <!--左侧导航栏-->
         <div id="leftmenu">
             <div id="managermenu" ><div>用户与商品管理</div></div>
-            <div id="selectmenu" class="menustyle">查看商品</div>
+            <div id="selectmenu" class="menustyle">查看商品
+                <%--<form action="ShopServlet" method="post">--%>
+                    <%--<input type="submit" value="查看商品" >--%>
+                <%--</form>--%>
+            </div>
             <div id="addmenu" class="menustyle">添加商品</div>
             <div id="updatemenu" class="menustyle">修改商品</div>
             <div id="classesmenu" class="menustyle">类别管理</div>
@@ -40,93 +48,39 @@
             <div id="right1">
                 <table id="productlist1" border="1px">
                     <tr>
-                        <th>商品ID</th>
-                        <th>商品名称</th>
-                        <th>商品类型</th>
-                        <th>商品品牌</th>
-                        <th>生产日期</th>
-                        <th>商品售价</th>
-                        <th>商品库存</th>
-                        <th>已售数量</th>
-                        <th>商品图片</th>
-                        <th>商品标题</th>
-                        <th>商品介绍</th>
-                        <th>修改日期</th>
-                        <th>操作台</th>
+                        <%--<th>商品ID</th>--%>
+                        <%--<th>商品名称</th>--%>
+                        <%--<th>商品类型</th>--%>
+                        <%--<th>商品品牌</th>--%>
+                        <%--<th>生产日期</th>--%>
+                        <%--<th>商品售价</th>--%>
+                        <%--<th>商品库存</th>--%>
+                        <%--<th>已售数量</th>--%>
+                        <%--<th>商品图片</th>--%>
+                        <%--<th>商品标题</th>--%>
+                        <%--<th>商品介绍</th>--%>
+                        <%--<th>修改日期</th>--%>
+                        <%--<th>操作台</th>--%>
+                            <th>商品ID</th>
+                            <th>商品名称</th>
+                            <th>商品图片</th>
+                            <th>商品描述</th>
+                            <th>商品价格</th>
+                            <th>删除操作</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>苹果</td>
-                        <td>水果</td>
-                        <td>烟台红富士</td>
-                        <td>20181117</td>
-                        <td>3</td>
-                        <td>1000</td>
-                        <td>100</td>
-                        <td>无</td>
-                        <td>新鲜的红富士</td>
-                        <td>我是苹果</td>
-                        <td>20181117</td>
-                        <td>
-                            <div class="change" >修改</div>
-                            <div class="delete" >删除</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>香蕉</td>
-                        <td>水果</td>
-                        <td>海南香蕉</td>
-                        <td>20181117</td>
-                        <td>2</td>
-                        <td>1200</td>
-                        <td>300</td>
-                        <td>无</td>
-                        <td>新鲜的沙糖桔</td>
-                        <td>我是橘子</td>
-                        <td>20181117</td>
-                        <td>
-                            <div class="change" >修改</div>
-                            <div class="delete">删除</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>橘子</td>
-                        <td>水果</td>
-                        <td>湖南沙糖桔</td>
-                        <td>20181117</td>
-                        <td>4</td>
-                        <td>900</td>
-                        <td>500</td>
-                        <td>无</td>
-                        <td>新鲜的大香蕉</td>
-                        <td>我是香蕉</td>
-                        <td>20181117</td>
-                        <td>
-                            <div class="change" >修改</div>
-                            <div class="delete">删除</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>鸭梨</td>
-                        <td>水果</td>
-                        <td>亚历山大</td>
-                        <td>20181117</td>
-                        <td>3.5</td>
-                        <td>5000</td>
-                        <td>10</td>
-                        <td>无</td>
-                        <td>巨大无比的鸭梨</td>
-                        <td>我是鸭梨</td>
-                        <td>20181117</td>
-                        <td>
-                            <div class="change" >修改</div>
-                            <div class="delete">删除</div>
-                        </td>
-                    </tr>
-                </table></div>
+                    <c:forEach items="${shops}" var="shop">
+                        <tr>
+                            <td>${shop.shop_id}</td>
+                            <td>${shop.shop_name}</td>
+                            <td><img src="http://localhost:8080/photo/${shop.shop_img}"></td>
+                            <td>${shop.shop_des}</td>
+                            <td>${shop.shop_price}</td>
+                            <td>
+                                <a href="delServet?id${shop.shop_id}">删除</a>></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
             <!--添加商品页面-->
             <div id="right2">
                 <div id="addproduct_left">
