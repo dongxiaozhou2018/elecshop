@@ -38,4 +38,20 @@ public class ShopDaoImpl implements ShopDao {
         }
         return lists;
     }
+
+    @Override
+    public void deleteOneShop(int shop_id)
+    {
+        Connection connection = DBUtils.getConnection();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement("delete from goods where shop_id=?");
+            preparedStatement.setInt(1,shop_id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            DBUtils.closeResource(connection,preparedStatement,null);
+        }
+    }
 }

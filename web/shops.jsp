@@ -53,7 +53,7 @@
                     <td><img src="http://localhost:8080/photo/${shop.shop_img}"></td>
                     <td>${shop.shop_des}</td>
                     <td>${shop.shop_price}</td>
-                    <td><<a href="delServet?id${shop.shop_id}">删除</a>></td>
+                    <td><a href="DeleteServlet?id=${shop.shop_id}">删除</a></td>
                 </tr>
             </c:forEach>
 </table>

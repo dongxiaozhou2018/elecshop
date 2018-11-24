@@ -16,8 +16,11 @@ public class Test {
 //        boolean b = usersDao.addOneUser(user);
 //        System.out.println(b);
 
+//        ShopDao shopDao = new ShopDaoImpl();
+//        List<Shops> allShop = shopDao.getAllShop();
+//        System.out.println(allShop);
+
         ShopDao shopDao = new ShopDaoImpl();
-        List<Shops> allShop = shopDao.getAllShop();
-        System.out.println(allShop);
+        shopDao.deleteOneShop(1);
     }
 }

@@ -76,7 +76,8 @@
                             <td>${shop.shop_des}</td>
                             <td>${shop.shop_price}</td>
                             <td>
-                                <a href="delServet?id${shop.shop_id}">删除</a>></td>
+                                <div class="delete"><a href="DeleteServlet?id=${shop.shop_id}">删除</a></div>
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>
