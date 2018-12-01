@@ -20,7 +20,16 @@ public class Test {
 //        List<Shops> allShop = shopDao.getAllShop();
 //        System.out.println(allShop);
 
+//        ShopDao shopDao = new ShopDaoImpl();
+//        shopDao.deleteOneShop(1);
+
         ShopDao shopDao = new ShopDaoImpl();
-        shopDao.deleteOneShop(1);
+        Shops shops = new Shops(null,"小米","jianpan.jpg","好敲的机械键盘",null);
+        boolean b = shopDao.addOneProduct(shops);
+        System.out.println(b);
+
+//        ShopDaoImpl shopDao1 = new ShopDaoImpl();
+//        Shops oneShop = shopDao1.getOneShop(15);
+//        System.out.println(oneShop);
     }
 }

@@ -10,4 +10,6 @@ public interface UsersDao {
     //添加数据
     public boolean addOneUser(User user);
 
+    public  boolean isExists(User user);
+
 }

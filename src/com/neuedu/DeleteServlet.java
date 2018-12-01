@@ -19,6 +19,6 @@ public class DeleteServlet extends HttpServlet {
         ShopDao shopDao = new ShopDaoImpl();
         int i = Integer.parseInt(id);
         shopDao.deleteOneShop(i);
-        resp.sendRedirect("/ShopServlet");
+        req.getRequestDispatcher("/ShopServlet").forward(req,resp);
     }
 }

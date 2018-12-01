@@ -11,4 +11,15 @@
         <servlet-name>hello</servlet-name>
         <url-pattern>/helloServlet</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>FilterDemo</filter-name>
+        <filter-class>com.neuedu.controller.FilterDemo</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FilterDemo</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
 </web-app>

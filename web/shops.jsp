@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<form action="ShopServlet">
+<form action="QueryServlet">
     <input type="submit" name="提交表单" >
 </form>
 <%--<table >--%>
@@ -54,6 +54,7 @@
                     <td>${shop.shop_des}</td>
                     <td>${shop.shop_price}</td>
                     <td><a href="DeleteServlet?id=${shop.shop_id}">删除</a></td>
+                    <td><a href="QueryServlet?id=${shop.shop_id}">修改</a></td>
                 </tr>
             </c:forEach>
 </table>

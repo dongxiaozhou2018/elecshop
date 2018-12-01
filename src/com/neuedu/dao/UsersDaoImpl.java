@@ -32,4 +32,24 @@ public class UsersDaoImpl implements UsersDao {
         }
         return false;
     }
+
+    @Override
+    public boolean isExists(User user) {
+        Connection connection = DBUtils.getConnection();
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement("select *from shop where username=?and password=?");
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getPassWord());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DBUtils.closeResource(connection, preparedStatement, null);
+        }
+        return false;
+    }
 }

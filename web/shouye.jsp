@@ -14,12 +14,12 @@
 <head>
     <meta charset="UTF-8">
     <title>主页面</title>
-    <link rel="stylesheet" href="../css/shouye.css">
-    <link rel="stylesheet" href="../css/productList.css">
-    <link rel="stylesheet" href="../css/addproduct.css">
-    <link rel="stylesheet" href="../css/deleteproduct.css">
-    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../js/mainpage.js"></script>
+    <link rel="stylesheet" href="css/shouye.css">
+    <link rel="stylesheet" href="css/productList.css">
+    <link rel="stylesheet" href="css/addproduct.css">
+    <link rel="stylesheet" href="css/deleteproduct.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/mainpage.js"></script>
 </head>
 <body>
 <div id="container">
@@ -72,11 +72,12 @@
                         <tr>
                             <td>${shop.shop_id}</td>
                             <td>${shop.shop_name}</td>
-                            <td><img src="http://localhost:8080/photo/${shop.shop_img}"></td>
+                            <td><img src="http://localhost:8080/photo/${shop.shop_img}"width="50px" height="50px"></td>
                             <td>${shop.shop_des}</td>
                             <td>${shop.shop_price}</td>
                             <td>
                                 <div class="delete"><a href="DeleteServlet?id=${shop.shop_id}">删除</a></div>
+                                <div class="change">修改</div>
                             </td>
                         </tr>
                     </c:forEach>
@@ -85,28 +86,16 @@
             <!--添加商品页面-->
             <div id="right2">
                 <div id="addproduct_left">
-                    <ul id="goodsname">
-                        <li id="goos_name" >商品名称</li>
-                        <li><input type="text" id="goods_name_input" placeholder="商品名称"></li>
-                        <li>
-                            <div>商品价格</div>
-                            <div>商品库存</div>
-                        </li>
-                        <li>
-                            <input type="text" placeholder="商品价格">
-                            <input type="text" placeholder="商品库存">
-                        </li>
-                        <li>
-                            <div>商品品牌</div>
-                            <div>商品类型</div>
-                        </li>
-                        <li>
-                            <input type="text" placeholder="商品品牌">
-                            <input type="text" placeholder="商品类型">
-                        </li>
-                        <li id="goods_date">生产日期</li>
-                        <li><input type="text" id="goods_date_input"placeholder="年/月/日"></li>
-                    </ul>
+                    <form action="addProductServlet">
+                        <ul>
+                            <li><input type="text"name="shop_id" placeholder="商品ID"></li>
+                            <li><input type="text"name="shop_name"placeholder="商品名称"></li>
+                            <li><input type="text"name="shop_img"placeholder="商品图片"></li>
+                            <li><input type="text"name="shop_des"placeholder="商品介绍"></li>
+                            <li><input type="text"name="shop_price"placeholder="商品价格"></li>
+                            <li><input type="submit"name="确认添加"></li>
+                        </ul>
+                    </form>
                 </div>
                 <div id="addproduct_center">
                     <ul id="goodstype">
@@ -128,34 +117,46 @@
             <!--修改商品页面-->
             <div id="right3">
                 <div id="deleteproduct_left">
-                    <ul id="goodsID">
-                        <li id="goods_ID" >商品ID</li>
-                        <li>
-                            <input type="text" id="goods_ID_input" placeholder="商品ID号">
-                            <input type="button" id="goods_IDget_button" value="获取ID信息">
-                        </li>
-                        <li>
-                            <div>商品名称</div>
-                        </li>
-                        <li><input type="text" placeholder="商品名称" id="goods_name_delete_select">
-                        </li>
-                        <li>
-                            <div>商品价格</div>
-                            <div>商品库存</div>
-                        </li>
-                        <li>
-                            <input type="text" placeholder="商品价格">
-                            <input type="text" placeholder="商品库存">
-                        </li>
-                        <li>
-                            <div>商品品牌</div>
-                            <div>商品类型</div>
-                        </li>
-                        <li>
-                            <input type="text" placeholder="商品品牌">
-                            <input type="text" placeholder="商品类型">
-                        </li>
-                    </ul>
+                    <%--<ul id="goodsID">--%>
+                        <%--<li id="goods_ID" >商品ID</li>--%>
+                        <%--<li>--%>
+                            <%--<input type="text" id="goods_ID_input" placeholder="商品ID号">--%>
+                            <%--<input type="button" id="goods_IDget_button" value="获取ID信息">--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div>商品名称</div>--%>
+                        <%--</li>--%>
+                        <%--<li><input type="text" placeholder="商品名称" id="goods_name_delete_select">--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div>商品价格</div>--%>
+                            <%--<div>商品库存</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<input type="text" placeholder="商品价格">--%>
+                            <%--<input type="text" placeholder="商品库存">--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<div>商品品牌</div>--%>
+                            <%--<div>商品类型</div>--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                            <%--<input type="text" placeholder="商品品牌">--%>
+                            <%--<input type="text" placeholder="商品类型">--%>
+                        <%--</li>--%>
+                    <%--</ul>--%>
+                        <c:forEach items="${shops}" var="shop">
+                            <tr>
+                                <td>${shop.shop_id}</td>
+                                <td>${shop.shop_name}</td>
+                                <td><img src="http://localhost:8080/photo/${shop.shop_img}"width="50px" height="50px"></td>
+                                <td>${shop.shop_des}</td>
+                                <td>${shop.shop_price}</td>
+                                <td>
+                                    <div class="change"><a href="QueryServlet?id=${shop.shop_id}">修改</a></div>
+                                </td>
+                            </tr>
+                        </c:forEach>
                 </div>
                 <div id="deleteproduct_center">
                     <ul id="goodsmessage">

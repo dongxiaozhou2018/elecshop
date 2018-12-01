@@ -16,6 +16,7 @@ import java.util.List;
 public class ShopServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         ShopDao shopDao = new ShopDaoImpl();
         List<Shops> allShop = shopDao.getAllShop();
         req.setAttribute("shops",allShop);
